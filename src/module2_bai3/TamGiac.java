@@ -55,8 +55,25 @@ public class TamGiac {
         double mp = (double) this.getP()/2;
         return Math.sqrt(mp*(mp-ma) * (mp-mb) * (mp-mc));
      }
+    public String getType() {
+        if (ma == mb && mb == mc && ma == mc) {
+            return "Tam giác đều";
+        } else if (ma == mb || mb == mc || ma == mc) {
+            return "Tam giác cân";
+        } else if (isRightTriangle()) {
+            return "Tam giác vuông";
+        } else {
+            return "Tam giác thường";
+        }
+    }
+
+    private boolean isRightTriangle() {
+        if ((ma*ma + mb*mb == mc*mc) || (ma*ma + mc*mc == mb*mb)|| (mb*mb + mc*mc == ma*ma))
+            return true;
+        else return false;
+    }
      //override
      public String toString(){
-        return "ma= "+this.ma+"\t mb= "+this.mb+"\t mc= "+this.mc+"\t ChuVi= "+this.getP()+"\t DienTich: "+this.getS();
+        return "ma= "+this.ma+"\t mb= "+this.mb+"\t mc= "+this.mc+"\t ChuVi= "+this.getP()+"\t DienTich: "+this.getS()+"\tLoai tam giac: "+this.getType();
      }
 }
